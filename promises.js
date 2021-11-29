@@ -38,17 +38,25 @@ promiseExample.then((res, arr = [1,2,3,4,5,6,7]) => {
 //Fetch a couple of pokemon
 //link to api: https://pokeapi.co/
 
-fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
-.then((res) => res.json())
-.then((data)=> console.log(data))
-.catch((err) => console.error(err))
-
-// const response = fetch('https://pokeapi.co/api/v2/');
-// const body = await response.test();
-
-// console.log(body);
+// fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+// .then((res) => res.json())
+// .then((data)=> console.log(data))
+// .catch((err) => console.error(err))
 
 //Exercise 3:
 //pick an API from this list, make sure you choose one where auth is NO
 //https://github.com/public-apis/public-apis
 //experiment fetching data by using async/await.
+const fetchBoredActivity = async (id) => {
+    try {
+        const res = await fetch('https://www.boredapi.com/api/activity');
+        const data = await res.json()
+        return data
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+fetchBoredActivity().then((data) => {
+    console.log(data)
+})
